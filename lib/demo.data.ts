@@ -11,7 +11,7 @@ export const description = [
         _key: '4a58edd077880',
         _type: 'span',
         marks: [],
-        text: 'A Sanity community generated blog.',
+        text: 'Compilations from Life.',
       }
     ],
     style: 'normal',
