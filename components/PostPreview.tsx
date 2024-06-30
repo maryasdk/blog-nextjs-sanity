@@ -1,8 +1,9 @@
-import Avatar from 'components/AuthorAvatar'
 import CoverImage from 'components/CoverImage'
-import Date from 'components/PostDate'
+import PostDate from 'components/PostDate'
 import type { Post } from 'lib/sanity.queries'
 import Link from 'next/link'
+
+import AuthorAvatar from './AuthorAvatar'
 
 export default function PostPreview({
   title,
@@ -27,11 +28,13 @@ export default function PostPreview({
           {title}
         </Link>
       </h3>
-      <div className="mb-4 text-lg">
-        <Date dateString={date} />
+      <div className='flex flex-row mb-4 content-center'>
+        <div className="mr-4 text-lg text-gray-500">
+          <PostDate dateString={date} />
+        </div>
+        {author && <AuthorAvatar picture={author.picture} size={24} />}
       </div>
       {excerpt && <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>}
-      {author && <Avatar name={author.name} picture={author.picture} />}
     </div>
   )
 }
