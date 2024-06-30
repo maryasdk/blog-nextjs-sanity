@@ -3,9 +3,10 @@ import BlogHeader from 'components/BlogHeader'
 import Layout from 'components/BlogLayout'
 import IndexPageHead from 'components/IndexPageHead'
 import MoreStories from 'components/Stories'
-import IntroTemplate from 'intro-template'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
+
+import { Footer } from './Footer'
 
 export interface IndexPageProps {
   preview?: boolean
@@ -34,7 +35,7 @@ export default function IndexPage(props: IndexPageProps) {
           </section>
           {posts.length > 0 && <MoreStories posts={posts} />}
         </Container>
-        <IntroTemplate />
+        <Footer />
       </Layout>
     </>
   )
