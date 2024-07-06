@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/react';
 import { Head, Html, Main, NextScript } from 'next/document';
 
 export default function Document() {
@@ -8,7 +7,6 @@ export default function Document() {
       <body className="bg-white text-black">
         <Main />
         <NextScript />
-        <Analytics/>
       </body>
     </Html>
   )

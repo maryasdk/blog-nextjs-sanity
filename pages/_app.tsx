@@ -1,7 +1,8 @@
-import 'tailwindcss/tailwind.css'
+import 'tailwindcss/tailwind.css';
 
-import { AppProps } from 'next/app'
-import { lazy } from 'react'
+import { Analytics } from '@vercel/analytics/react';
+import { AppProps } from 'next/app';
+import { lazy } from 'react';
 
 export interface SharedPageProps {
   draftMode: boolean
@@ -24,6 +25,7 @@ export default function App({
       ) : (
         <Component {...pageProps} />
       )}
+      <Analytics/>
     </>
   )
 }
