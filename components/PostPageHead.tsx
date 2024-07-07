@@ -1,3 +1,4 @@
+import { toPlainText } from '@portabletext/react'
 import BlogMeta from 'components/BlogMeta'
 import * as demo from 'lib/demo.data'
 import { urlForImage } from 'lib/sanity.image'
@@ -15,6 +16,11 @@ export default function PostPageHead({ settings, post }: PostPageHeadProps) {
     <Head>
       <title>{post.title ? `${post.title} | ${title}` : title}</title>
       <BlogMeta />
+      <meta
+        key="description"
+        name="description"
+        content={`${toPlainText(post.content).substring(0, 160)}...`}
+      />
       {post.coverImage?.asset?._ref && (
         <meta
           property="og:image"
