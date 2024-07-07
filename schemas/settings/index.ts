@@ -22,12 +22,12 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'description',
+      name: 'subheader',
       description:
-        'Used both for the <meta> description tag for SEO, and the blog subheader.',
-      title: 'Description',
+        'Used for the blog subheader.',
+      title: 'Subheader',
       type: 'array',
-      initialValue: demo.description,
+      initialValue: demo.subheader,
       of: [
         defineArrayMember({
           type: 'block',
@@ -54,6 +54,14 @@ export default defineType({
         }),
       ],
       validation: (rule) => rule.max(155).required(),
+    }),
+    defineField({
+      name: 'metaDescription',
+      description: 'Used for the <meta> description tag for SEO.',
+      title: 'Meta Description',
+      type: 'string',
+      initialValue: demo.metaDescription,
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'ogImage',

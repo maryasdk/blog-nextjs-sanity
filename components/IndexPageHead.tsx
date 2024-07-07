@@ -1,4 +1,3 @@
-import { toPlainText } from '@portabletext/react'
 import BlogMeta from 'components/BlogMeta'
 import * as demo from 'lib/demo.data'
 import { Settings } from 'lib/sanity.queries'
@@ -11,7 +10,7 @@ export interface IndexPageHeadProps {
 export default function IndexPageHead({ settings }: IndexPageHeadProps) {
   const {
     title = demo.title,
-    description = demo.description,
+    metaDescription = demo.metaDescription,
     ogImage = {},
   } = settings
   const ogImageTitle = ogImage?.title || demo.ogImageTitle
@@ -23,7 +22,7 @@ export default function IndexPageHead({ settings }: IndexPageHeadProps) {
       <meta
         key="description"
         name="description"
-        content={toPlainText(description)}
+        content={metaDescription}
       />
       <meta
         property="og:image"
