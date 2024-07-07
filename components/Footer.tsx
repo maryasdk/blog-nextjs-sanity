@@ -19,13 +19,14 @@ export function Footer () {
             <div className="flex flex-col">
                 <h3 className="font-bold mb-4">Get in Touch</h3>
                 <div className="flex flex-row gap-6">
-                    <a href="mailto:marya.sdk@gmail.com">
+                    <a href="mailto:marya.sdk@gmail.com" aria-label="Send me an email">
                         <MdOutlineEmail className="fill-gray-400" size={25} />
                     </a>
                     <a
                         href={'https://www.linkedin.com/in/marya-sdk/'}
                         target="_blank"
                         rel="noreferrer"
+                        aria-label="Follow me on Linkedin"
                     >
                         <FaLinkedin className="fill-gray-400" size={25} />
                     </a>
@@ -33,6 +34,7 @@ export function Footer () {
                         href={'https://www.instagram.com/maryasadek/'}
                         target="_blank"
                         rel="noreferrer"
+                        aria-label="Follow me on Instagram"
                     >
                         <FaInstagram className="fill-gray-400" size={25} />
                     </a>
