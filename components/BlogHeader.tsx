@@ -5,11 +5,11 @@ import styles from './BlogHeader.module.css'
 
 export default function BlogHeader({
   title,
-  description,
+  subheader,
   level,
 }: {
   title: string
-  description?: any[]
+  subheader?: any[]
   level: 1 | 2
 }) {
   switch (level) {
@@ -22,7 +22,7 @@ export default function BlogHeader({
             <div
               className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}
             >
-              <PortableText value={description} />
+              <PortableText value={subheader} />
             </div>
         </header>
       )
