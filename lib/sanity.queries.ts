@@ -58,10 +58,12 @@ export interface Post {
 }
 
 export interface Settings {
-  title?: string
+  title: string
   metaDescription?: string
   subheader?: any[]
   ogImage?: {
     title?: string
   }
+  introTitle: string
+  introContent: string
 }

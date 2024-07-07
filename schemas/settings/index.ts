@@ -81,5 +81,21 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'introTitle',
+      description: 'Used for the title of the website introduction on the Home screen.',
+      title: 'Introduction Title',
+      type: 'string',
+      initialValue: demo.introTitle,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'introContent',
+      description: 'Used for the content of the website introduction on the Home screen.',
+      title: 'Introduction Content',
+      type: 'string',
+      initialValue: demo.introContent,
+      validation: (rule) => rule.required(),
+    }),
   ],
 })
