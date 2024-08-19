@@ -10,10 +10,6 @@
     "start": "next start",
     "type-check": "tsc --noEmit"
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
-  },
   "dependencies": {
     "@portabletext/react": "3.0.11",
     "@sanity/client": "6.6.0",

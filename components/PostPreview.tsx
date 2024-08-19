@@ -28,7 +28,7 @@ export default function PostPreview({
           {title}
         </Link>
       </h3>
-      <div className='flex flex-row mb-4 content-center'>
+      <div className="flex flex-row mb-4 content-center">
         <div className="mr-4 text-lg text-gray-500">
           <PostDate dateString={date} />
         </div>

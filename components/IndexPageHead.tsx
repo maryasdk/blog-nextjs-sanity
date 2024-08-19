@@ -19,11 +19,7 @@ export default function IndexPageHead({ settings }: IndexPageHeadProps) {
     <Head>
       <title>{title}</title>
       <BlogMeta />
-      <meta
-        key="description"
-        name="description"
-        content={metaDescription}
-      />
+      <meta key="description" name="description" content={metaDescription} />
       <meta
         property="og:image"
         // Because OG images must have a absolute URL, we use the
@@ -34,7 +30,10 @@ export default function IndexPageHead({ settings }: IndexPageHeadProps) {
           process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : ''
         }/api/og?${new URLSearchParams({ title: ogImageTitle })}`}
       />
-      <meta name="google-site-verification" content="E5Sr17z1FamSkpNIAxFVFDrxbFgAUrV8IMzYNf1781c" />
+      <meta
+        name="google-site-verification"
+        content="E5Sr17z1FamSkpNIAxFVFDrxbFgAUrV8IMzYNf1781c"
+      />
     </Head>
   )
 }

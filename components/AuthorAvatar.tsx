@@ -3,7 +3,7 @@ import type { Author } from 'lib/sanity.queries'
 import Image from 'next/image'
 
 export default function AuthorAvatar(props: Author & { size?: number }) {
-  const { name, picture, size = 96  } = props
+  const { name, picture, size = 96 } = props
   return (
     <div className="flex items-center">
       <div className="relative mr-4" style={{ height: size, width: size }}>
