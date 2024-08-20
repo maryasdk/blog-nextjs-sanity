@@ -5,8 +5,8 @@ import { memo, useEffect, useState } from 'react'
 import cover from './cover.png'
 
 export default memo(function IntroTemplate() {
-  const [studioURL, setStudioURL] = useState(null)
-  const [createPostURL, setCreatePostURL] = useState(null)
+  const [studioURL, setStudioURL] = useState<string | null>(null)
+  const [createPostURL, setCreatePostURL] = useState<string | null>(null)
   const [isLocalHost, setIsLocalhost] = useState(false)
 
   const hasEnvFile = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
@@ -93,14 +93,16 @@ export default memo(function IntroTemplate() {
                     </Link>
                   </div>
 
-                  <div className="mt-3">
-                    <Link
-                      className="inline-flex rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-800"
-                      href={createPostURL}
-                    >
-                      Go to Sanity Studio
-                    </Link>
-                  </div>
+                  {createPostURL && (
+                    <div className="mt-3">
+                      <Link
+                        className="inline-flex rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-800"
+                        href={createPostURL}
+                      >
+                        Go to Sanity Studio
+                      </Link>
+                    </div>
+                  )}
                 </div>
               }
             />
@@ -223,7 +225,7 @@ function BlueLink({ href, text }: { href: string; text: string }) {
   )
 }
 
-const RemoveBlock = ({ url }) => (
+const RemoveBlock = ({ url }: { url: string }) => (
   <a
     className="hover:text-blue-800"
     href={url}
