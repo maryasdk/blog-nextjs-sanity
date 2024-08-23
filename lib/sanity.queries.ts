@@ -47,13 +47,13 @@ export interface Author {
 
 export interface Post {
   _id: string
-  title?: string
+  title: string
   coverImage?: any
-  date?: string
+  date: string
   _updatedAt?: string
   excerpt?: string
   author?: Author
-  slug?: string
+  slug: string
   content?: any
 }
 
