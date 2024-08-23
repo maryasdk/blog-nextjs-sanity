@@ -1,3 +1,4 @@
+import { ServerResponse } from 'http'
 import { getAllPosts, getClient } from 'lib/sanity.client'
 
 type SitemapLocation = {
@@ -51,7 +52,7 @@ export default function SiteMap() {
   // getServerSideProps will do the heavy lifting
 }
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({ res }: { res: ServerResponse }) {
   const client = getClient()
 
   // Get list of Post urls
@@ -62,7 +63,7 @@ export async function getServerSideProps({ res }) {
       return {
         url: `/posts/${post.slug}`,
         priority: 0.5,
-        lastmod: new Date(post._updatedAt),
+        ...(post._updatedAt && { lastmod: new Date(post._updatedAt) }),
       }
     })
 

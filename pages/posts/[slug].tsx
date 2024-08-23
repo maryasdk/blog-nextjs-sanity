@@ -14,7 +14,7 @@ import type { SharedPageProps } from 'pages/_app'
 interface PageProps extends SharedPageProps {
   post: Post
   morePosts: Post[]
-  settings?: Settings
+  settings: Settings
 }
 
 interface Query {
