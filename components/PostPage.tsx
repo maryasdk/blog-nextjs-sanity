@@ -1,6 +1,6 @@
 import Container from 'components/BlogContainer'
 import BlogHeader from 'components/BlogHeader'
-import Layout from 'components/BlogLayout'
+import BlogLayout from 'components/BlogLayout'
 import PostBody from 'components/PostBody'
 import PostHeader from 'components/PostHeader'
 import PostPageHead from 'components/PostPageHead'
@@ -37,7 +37,7 @@ export default function PostPage(props: PostPageProps) {
     <>
       <PostPageHead settings={settings} post={post} />
 
-      <Layout preview={preview} loading={loading}>
+      <BlogLayout preview={preview} loading={loading}>
         <Container>
           <BlogHeader title={title} level={2} />
           {preview && !post ? (
@@ -59,7 +59,7 @@ export default function PostPage(props: PostPageProps) {
           )}
         </Container>
         <Footer />
-      </Layout>
+      </BlogLayout>
     </>
   )
 }

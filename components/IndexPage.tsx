@@ -1,6 +1,6 @@
 import Container from 'components/BlogContainer'
 import BlogHeader from 'components/BlogHeader'
-import Layout from 'components/BlogLayout'
+import BlogLayout from 'components/BlogLayout'
 import IndexPageHead from 'components/IndexPageHead'
 import MoreStories from 'components/Stories'
 import * as demo from 'lib/demo.data'
@@ -28,7 +28,7 @@ export default function IndexPage(props: IndexPageProps) {
     <>
       <IndexPageHead settings={settings} />
 
-      <Layout preview={preview} loading={loading}>
+      <BlogLayout preview={preview} loading={loading}>
         <Container>
           <BlogHeader title={title} subheader={subheader} level={1} />
           <section className="my-20">
@@ -39,7 +39,7 @@ export default function IndexPage(props: IndexPageProps) {
           {posts.length > 0 && <MoreStories posts={posts} />}
         </Container>
         <Footer />
-      </Layout>
+      </BlogLayout>
     </>
   )
 }

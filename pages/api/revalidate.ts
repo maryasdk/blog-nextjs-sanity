@@ -30,7 +30,7 @@ import {
   type SanityClient,
   type SanityDocument,
 } from 'next-sanity'
-import { parseBody, type ParsedBody } from 'next-sanity/webhook'
+import { parseBody } from 'next-sanity/webhook'
 
 export { config } from 'next-sanity/webhook'
 
@@ -55,26 +55,25 @@ export default async function revalidate(
       return res.status(400).send(invalidId)
     }
 
-    const staleRoutes = await queryStaleRoutes(body as any)
-    await Promise.all(staleRoutes.map((route) => res.revalidate(route)))
+    let updatedRoutes
+    if (body) {
+      const staleRoutes = await queryStaleRoutes(body)
+      await Promise.all(staleRoutes.map((route) => res.revalidate(route)))
 
-    const updatedRoutes = `Updated routes: ${staleRoutes.join(', ')}`
-    console.log(updatedRoutes)
+      const updatedRoutes = `Updated routes: ${staleRoutes.join(', ')}`
+      console.log(updatedRoutes)
+    }
+
     return res.status(200).send(updatedRoutes)
   } catch (err) {
     console.error(err)
-    return res.status(500).send(err.message)
+    return res.status(500).send((err as Error)?.message)
   }
 }
 
 type StaleRoute = '/' | `/posts/${string}`
 
-async function queryStaleRoutes(
-  body: Pick<
-    ParsedBody<SanityDocument>['body'],
-    '_type' | '_id' | 'date' | 'slug'
-  >,
-): Promise<StaleRoute[]> {
+async function queryStaleRoutes(body: SanityDocument): Promise<StaleRoute[]> {
   const client = createClient({ projectId, dataset, apiVersion, useCdn: false })
 
   // Handle possible deletions
@@ -123,7 +122,7 @@ async function queryAllRoutes(client: SanityClient): Promise<StaleRoute[]> {
 }
 
 async function mergeWithMoreStories(
-  client,
+  client: SanityClient,
   slugs: string[],
 ): Promise<string[]> {
   const moreStories = await client.fetch(
@@ -141,7 +140,7 @@ async function queryStaleAuthorRoutes(
   client: SanityClient,
   id: string,
 ): Promise<StaleRoute[]> {
-  let slugs = await client.fetch(
+  let slugs = await client.fetch<string[]>(
     groq`*[_type == "author" && _id == $id] {
     "slug": *[_type == "post" && references(^._id)].slug.current
   }["slug"][]`,
@@ -150,7 +149,7 @@ async function queryStaleAuthorRoutes(
 
   if (slugs.length > 0) {
     slugs = await mergeWithMoreStories(client, slugs)
-    return ['/', ...slugs.map((slug) => `/posts/${slug}`)]
+    return ['/', ...slugs.map((slug) => `/posts/${slug}` as StaleRoute)]
   }
 
   return []
@@ -160,12 +159,12 @@ async function queryStalePostRoutes(
   client: SanityClient,
   id: string,
 ): Promise<StaleRoute[]> {
-  let slugs = await client.fetch(
+  let slugs = await client.fetch<string[]>(
     groq`*[_type == "post" && _id == $id].slug.current`,
     { id },
   )
 
   slugs = await mergeWithMoreStories(client, slugs)
 
-  return ['/', ...slugs.map((slug) => `/posts/${slug}`)]
+  return ['/', ...slugs.map((slug) => `/posts/${slug}` as StaleRoute)]
 }
