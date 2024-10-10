@@ -1,14 +1,15 @@
 {
   "name": "nextjs-blog-cms-sanity-v3",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
-    "build": "next build",
     "dev": "npm run type-check & next",
+    "build": "next build",
+    "start": "next start",
     "format": "npx prettier --write . --ignore-path .gitignore --cache",
     "lint": "next lint -- --ignore-path .gitignore",
     "lint:fix": "npm run format && npm run lint -- --fix",
     "lint:config:print": "npx eslint --print-config ./pages/index.tsx",
-    "start": "next start",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
