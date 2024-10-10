@@ -10,7 +10,8 @@
     "lint": "next lint -- --ignore-path .gitignore",
     "lint:fix": "npm run format && npm run lint -- --fix",
     "lint:config:print": "npx eslint --print-config ./pages/index.tsx",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "outdated": "npm outdated"
   },
   "dependencies": {
     "@portabletext/react": "3.0.11",
@@ -23,12 +24,12 @@
     "date-fns": "2.30.0",
     "intl-segmenter-polyfill": "0.4.4",
     "next": "14.2.14",
-    "next-sanity": "5.5.10",
+    "next-sanity": "~6.1.4",
     "next-sanity-image": "6.1.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-icons": "^5.2.1",
-    "sanity": "3.18.1",
+    "sanity": "~3.19.0",
     "sanity-plugin-asset-source-unsplash": "1.1.1",
     "sanity-plugin-iframe-pane": "2.6.0",
     "styled-components": "5.3.11",
@@ -39,17 +40,17 @@
     "@types/react-dom": "18.3.0",
     "@types/styled-components": "5.1.28",
     "autoprefixer": "10.4.16",
-    "eslint": "8.51.0",
-    "eslint-config-next": "14.2.14",
-    "eslint-plugin-simple-import-sort": "10.0.0",
+    "eslint": "8.57.1",
+    "eslint-config-next": "14.2.15",
+    "eslint-plugin-simple-import-sort": "12.1.1",
     "postcss": "8.4.31",
-    "prettier": "3.0.3",
-    "prettier-plugin-packagejson": "2.4.6",
-    "prettier-plugin-tailwindcss": "0.5.6",
+    "prettier": "3.3.3",
+    "prettier-plugin-packagejson": "2.5.3",
+    "prettier-plugin-tailwindcss": "0.6.8",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   }
 }
