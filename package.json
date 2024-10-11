@@ -3,7 +3,8 @@
   "version": "1.0.1",
   "private": true,
   "scripts": {
-    "dev": "npm run type-check & next",
+    "dev": "next",
+    "dev:type-check": "npm run type-check & next",
     "build": "next build",
     "start": "next start",
     "format": "npx prettier --write . --ignore-path .gitignore --cache",
